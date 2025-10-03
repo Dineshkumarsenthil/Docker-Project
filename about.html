@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About - My Docker Website</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(120deg, #0f2027 0%, #2c5364 100%);
+            color: #fff;
+            min-height: 100vh;
+            box-shadow: inset 0 0 120px #00f2fe33;
+        }
+        header {
+            background: linear-gradient(90deg, #00f2fe 0%, #4facfe 100%);
+            color: #fff;
+            padding: 32px 0 16px 0;
+            text-align: center;
+            border-radius: 0 0 18px 18px;
+            box-shadow: 0 2px 24px #00f2fe44;
+            text-shadow: 0 0 8px #00f2fe, 0 0 20px #4facfe;
+        }
+        header h1 {
+            font-size: 2.3rem;
+            font-weight: 700;
+            margin: 0;
+            letter-spacing: 1px;
+            text-shadow: 0 0 8px #00f2fe, 0 0 18px #4facfe;
+        }
+        nav {
+            margin-top: 10px;
+        }
+        nav a {
+            color: #fff;
+            font-weight: 600;
+            text-decoration: none;
+            margin: 0 14px;
+            font-size: 1.08rem;
+            text-shadow: 0 0 5px #00f2fe;
+            transition: text-shadow 0.2s, color 0.2s;
+        }
+        nav a:hover {
+            color: #00f2fe;
+            text-shadow: 0 0 14px #fff, 0 0 18px #00f2fe;
+        }
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 74vh;
+            margin-bottom: 60px;
+        }
+        .about-card {
+            display: flex;
+            flex-direction: row;
+            background: rgba(22, 30, 38, 0.97);
+            border-radius: 18px;
+            box-shadow: 0 8px 28px #00f2fe33, 0 0 0 2px #00f2fe88;
+            border: 2px solid #00f2fe;
+            max-width: 900px;
+            margin: 32px 16px 0 16px;
+            padding: 36px 28px;
+            gap: 36px;
+        }
+        .about-left, .about-right {
+            flex: 1;
+        }
+        .about-left h2 {
+            font-size: 1.7rem;
+            margin-bottom: 14px;
+            color: #00f2fe;
+            font-weight: 700;
+            text-shadow: 0 0 7px #00f2fe, 0 0 12px #4facfe;
+        }
+        .about-left p {
+            font-size: 1.08rem;
+            color: #e6faff;
+            line-height: 1.7;
+            font-weight: 500;
+            text-shadow: none;
+            letter-spacing: 0.02em;
+        }
+        .about-right h3 {
+            color: #4facfe;
+            font-size: 1.13rem;
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-weight: 700;
+            text-shadow: 0 0 10px #00f2fe44;
+        }
+        .about-right ul {
+            list-style: none;
+            padding: 0 0 0 5px;
+            margin-bottom: 18px;
+        }
+        .about-right ul li {
+            margin-bottom: 10px;
+            padding-left: 0;
+            font-size: 1.01rem;
+            color: #f0fdff;
+            border-left: 3px solid #00f2fe99;
+            padding-left: 10px;
+            font-weight: 500;
+            text-shadow: none;
+        }
+        .about-right li strong {
+            color: #fff;
+            font-weight: 700;
+            text-shadow: 0 0 4px #00f2fe99;
+        }
+        .thanks {
+            margin-top: 11px;
+            font-size: 1.01rem;
+            color: #fff;
+            font-weight: 600;
+            text-shadow: none;
+        }
+        .thanks a {
+            color: #00f2fe;
+            text-shadow: 0 0 8px #00f2fe;
+            text-decoration: underline;
+            font-weight: 600;
+        }
+        .thanks a:hover {
+            color: #fff;
+            text-shadow: 0 0 16px #00f2fe, 0 0 8px #fff;
+        }
+        .emoji {
+            font-size: 1.1em;
+            filter: drop-shadow(0 0 4px #00f2fe99);
+        }
+        footer {
+            background: #181818;
+            color: #fff;
+            text-align: center;
+            padding: 16px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            font-size: 1.05rem;
+            letter-spacing: 1px;
+            border-top: 2px solid #00f2fe;
+            box-shadow: 0 0 8px #00f2fe44;
+            text-shadow: 0 0 8px #00f2fe44;
+        }
+        @media (max-width: 900px) {
+            .about-card {
+                flex-direction: column;
+                gap: 18px;
+                padding: 22px 7px;
+            }
+            main {
+                min-height: 86vh;
+            }
+        }
+        @media (max-width: 600px) {
+            .about-card {
+                padding: 10px 2vw;
+                margin: 14px 2vw 0 2vw;
+            }
+            header h1 {
+                font-size: 1.2rem;
+            }
+            nav a {
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>About Us</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+    <main>
+        <section class="about-card horizontal">
+            <div class="about-left">
+                <h2>🚀 Welcome to My Docker Website!</h2>
+                <p>
+                    At <strong>My Docker Website</strong>, we are passionate about <b>simplifying web deployment</b> and making technology accessible for everyone.<br>
+                    Our mission is to empower developers, students, and enthusiasts to easily deploy static websites efficiently <span class="emoji">⚡</span>, securely <span class="emoji">🔒</span>, and consistently <span class="emoji">🔄</span> across any platform using Docker <span class="emoji">🐳</span> and Nginx <span class="emoji">🚀</span>.
+                </p>
+            </div>
+            <div class="about-right">
+                <h3>🌟 What Makes Us Unique</h3>
+                <ul>
+                    <li><strong>User-Centric Design:</strong> We prioritize intuitive experiences and easy-to-follow guides.</li>
+                    <li><strong>Cutting-edge Technology:</strong> Built with the latest tools for speed and reliability.</li>
+                    <li><strong>Dedicated Support:</strong> Our team is here to help you succeed with your containerized deployments.</li>
+                </ul>
+                <h3>👨‍💻 Meet the Team</h3>
+                <ul>
+                    <li><strong>Founder:</strong> Dineshkumar S.</li>
+                    <li><strong>Team:</strong> A passionate group of developers, designers, and tech enthusiasts who believe in collaboration, innovation, and continuous improvement.</li>
+                </ul>
+                <p class="thanks">
+                    <strong>Thank you for visiting My Docker Website!</strong><br>
+                    Feel free to <a href="contact.html">contact us</a> with any questions, feedback, or ideas.
+                </p>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 My Docker Website</p>
+    </footer>
+</body>
+</html>

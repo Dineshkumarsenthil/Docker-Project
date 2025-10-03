@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact - My Docker Website</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(120deg, #141e30 0%, #243b55 100%);
+            min-height: 100vh;
+            color: #fff;
+        }
+        header {
+            background: linear-gradient(90deg, #00f2fe 0%, #4facfe 100%);
+            color: #fff;
+            padding: 32px 0 18px 0;
+            text-align: center;
+            border-radius: 0 0 18px 18px;
+            box-shadow: 0 2px 24px #00f2fe44;
+            text-shadow: 0 0 12px #00f2fe, 0 0 26px #4facfe;
+        }
+        header h1 {
+            font-size: 2.3rem;
+            font-weight: 700;
+            margin: 0 0 10px 0;
+            letter-spacing: 1px;
+            text-shadow: 0 0 16px #00f2fe, 0 0 30px #4facfe;
+        }
+        nav {
+            margin-top: 10px;
+        }
+        nav a {
+            color: #fff;
+            font-weight: 600;
+            text-decoration: none;
+            margin: 0 18px;
+            font-size: 1.15rem;
+            text-shadow: 0 0 8px #00f2fe;
+            transition: text-shadow 0.2s, color 0.2s;
+        }
+        nav a:hover {
+            color: #00f2fe;
+            text-shadow: 0 0 18px #fff, 0 0 36px #00f2fe;
+        }
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 75vh;
+        }
+        .contact-card {
+            background: rgba(22, 30, 38, 0.98);
+            padding: 44px 54px 38px 54px;
+            border-radius: 26px;
+            border: 3.5px solid #00f2fe;
+            max-width: 480px;
+            width: 100%;
+            margin: 62px 0 0 0;
+            text-align: center;
+            position: relative;
+            box-shadow:
+                0 0 24px #00f2fe99,
+                0 0 80px #4facfe44,
+                0 8px 32px #23243b88;
+        }
+        .contact-card:before {
+            content: "";
+            position: absolute;
+            top: -15px; left: -15px; right: -15px; bottom: -15px;
+            border-radius: 36px;
+            pointer-events: none;
+            z-index: 0;
+            box-shadow: 0 0 90px #00f2fe88, 0 0 220px #4facfe33, 0 0 30px #fff2;
+            opacity: 0.6;
+        }
+        .contact-card h2 {
+            font-size: 1.9rem;
+            margin-bottom: 28px;
+            font-weight: 700;
+            color: #00f2fe;
+            text-shadow: 0 0 14px #00f2fe, 0 0 28px #4facfe;
+            letter-spacing: 1.5px;
+        }
+        .contact-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+            position: relative;
+            z-index: 1;
+        }
+        .contact-row {
+            display: grid;
+            grid-template-columns: 38px 1fr 2.2fr;
+            align-items: center;
+            gap: 0 16px;
+        }
+        .contact-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            height: 38px;
+        }
+        .contact-icon svg {
+            width: 28px;
+            height: 28px;
+            vertical-align: middle;
+            fill: url(#neon-gradient);
+            stroke: #00f2fe;
+            stroke-width: 1.2;
+            filter: drop-shadow(0 0 8px #00f2fe88);
+            transition: filter 0.3s, transform 0.3s;
+        }
+        .contact-row:hover .contact-icon svg,
+        .contact-row:focus-within .contact-icon svg {
+            filter: drop-shadow(0 0 18px #00f2fecc) drop-shadow(0 0 30px #4facfe99);
+            transform: scale(1.15);
+            animation: neon-glow 1s infinite alternate;
+        }
+        .contact-label {
+            font-weight: 700;
+            color: #00f2fe;
+            font-size: 1.18rem;
+            letter-spacing: 0.03em;
+            text-shadow: 0 0 14px #00f2fe, 0 0 26px #4facfe;
+            white-space: nowrap;
+            margin-bottom: 2px;
+            text-align: left;
+        }
+        .contact-value {
+            font-size: 1.13rem;
+            color: #e6faff;
+            font-weight: 600;
+            word-break: break-all;
+            text-shadow: 0 0 6px #00f2fe44;
+            text-align: left;
+        }
+        .contact-value a {
+            color: #4facfe;
+            text-decoration: none;
+            font-weight: 700;
+            background: linear-gradient(90deg, #00f2fe 0%, #4facfe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            transition: color 0.2s, text-shadow 0.2s;
+            text-shadow: 0 0 14px #00f2fe77, 0 0 30px #4facfe22;
+            position: relative;
+        }
+        .contact-value a:hover, .contact-value a:focus {
+            text-decoration: underline;
+            color: #fff;
+            -webkit-text-fill-color: #fff;
+            text-shadow: 0 0 24px #00f2fe, 0 0 32px #4facfe;
+            animation: neon-link 1.2s infinite alternate;
+        }
+        /* Neon animation for icons */
+        @keyframes neon-glow {
+            0%, 100% {
+                filter: drop-shadow(0 0 10px #00f2feaa) drop-shadow(0 0 28px #4facfe55);
+            }
+            50% {
+                filter: drop-shadow(0 0 26px #00f2fe) drop-shadow(0 0 40px #4facfe99);
+            }
+        }
+        /* Neon animation for links */
+        @keyframes neon-link {
+            0%, 100% {
+                text-shadow: 0 0 14px #00f2fe77, 0 0 30px #4facfe22;
+            }
+            50% {
+                text-shadow: 0 0 24px #00f2fe, 0 0 40px #4facfe, 0 0 12px #fff;
+            }
+        }
+        @media (max-width: 600px) {
+            .contact-card {
+                padding: 22px 8px;
+                max-width: 98vw;
+            }
+            .contact-list {
+                gap: 16px;
+            }
+            .contact-row {
+                grid-template-columns: 28px 1fr 2fr;
+            }
+            .contact-card h2 {
+                font-size: 1.4rem;
+            }
+            .contact-value, .contact-label {
+                font-size: 1rem;
+            }
+        }
+        footer {
+            background: #181818;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            font-size: 1.09rem;
+            letter-spacing: 1px;
+            border-top: 2px solid #00f2fe;
+            box-shadow: 0 0 12px #00f2fe55;
+            text-shadow: 0 0 8px #00f2fe44;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Contact Us</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+    <main>
+        <section class="contact-card">
+            <h2>Get in Touch</h2>
+            <ul class="contact-list">
+                <!-- Phone -->
+                <li class="contact-row">
+                    <span class="contact-icon">
+                        <svg viewBox="0 0 24 24">
+                            <defs>
+                                <linearGradient id="neon-gradient" x1="0" y1="0" x2="1" y2="1">
+                                    <stop offset="0%" stop-color="#00f2fe"/>
+                                    <stop offset="100%" stop-color="#4facfe"/>
+                                </linearGradient>
+                            </defs>
+                            <path d="M6.62 10.79a15.09 15.09 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.72 11.72 0 003.7.59 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.72 11.72 0 00.59 3.7 1 1 0 01-.24 1.01l-2.2 2.2z"/>
+                        </svg>
+                    </span>
+                    <span class="contact-label">Phone:</span>
+                    <span class="contact-value"><a href="tel:+916379797538">6379797538</a></span>
+                </li>
+                <!-- Email -->
+                <li class="contact-row">
+                    <span class="contact-icon">
+                        <svg viewBox="0 0 24 24">
+                            <defs>
+                                <linearGradient id="neon-gradient2" x1="0" y1="0" x2="1" y2="1">
+                                    <stop offset="0%" stop-color="#00f2fe"/>
+                                    <stop offset="100%" stop-color="#4facfe"/>
+                                </linearGradient>
+                            </defs>
+                            <path fill="url(#neon-gradient2)" d="M4 4h16a2 2 0 012 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2zm0 2v.01L12 13 20 6.01V6H4zm16 2.24l-7.88 6.62a1.5 1.5 0 01-1.84 0L4 8.24V18h16V8.24z"/>
+                        </svg>
+                    </span>
+                    <span class="contact-label">Email:</span>
+                    <span class="contact-value"><a href="mailto:dineshkumarsenthilk123@gmail.com">dineshkumarsenthilk123@gmail.com</a></span>
+                </li>
+                <!-- LinkedIn -->
+                <li class="contact-row">
+                    <span class="contact-icon">
+                        <svg viewBox="0 0 24 24">
+                            <defs>
+                                <linearGradient id="neon-gradient3" x1="0" y1="0" x2="1" y2="1">
+                                    <stop offset="0%" stop-color="#00f2fe"/>
+                                    <stop offset="100%" stop-color="#4facfe"/>
+                                </linearGradient>
+                            </defs>
+                            <path fill="url(#neon-gradient3)" d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11.75 20h-3.25v-10h3.25v10zm-1.63-11.24c-1.04 0-1.88-.84-1.88-1.88s.84-1.88 1.88-1.88 1.88.84 1.88 1.88-.84 1.88-1.88 1.88zm15.38 11.24h-3.25v-5.5c0-1.31-.02-3-1.82-3-1.82 0-2.1 1.42-2.1 2.9v5.6h-3.25v-10h3.12v1.36h.04c.43-.81 1.5-1.66 3.09-1.66 3.31 0 3.92 2.18 3.92 5.01v5.29z"/>
+                        </svg>
+                    </span>
+                    <span class="contact-label">LinkedIn:</span>
+                    <span class="contact-value"><a href="https://www.linkedin.com/in/dineshkumar-senthilkumar/" target="_blank">linkedin.com/in/dineshkumar-senthilkumar/</a></span>
+                </li>
+                <!-- GitHub -->
+                <li class="contact-row">
+                    <span class="contact-icon">
+                        <svg viewBox="0 0 24 24">
+                            <defs>
+                                <linearGradient id="neon-gradient4" x1="0" y1="0" x2="1" y2="1">
+                                    <stop offset="0%" stop-color="#00f2fe"/>
+                                    <stop offset="100%" stop-color="#4facfe"/>
+                                </linearGradient>
+                            </defs>
+                            <path fill="url(#neon-gradient4)" d="M12 0a12 12 0 00-3.79 23.4c.6.11.82-.26.82-.58v-2.18c-3.34.73-4.04-1.61-4.04-1.61-.54-1.38-1.32-1.75-1.32-1.75-1.08-.74.08-.73.08-.73 1.19.08 1.81 1.22 1.81 1.22 1.06 1.81 2.79 1.29 3.47.99.11-.77.41-1.29.74-1.59-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.46-2.38 1.21-3.22-.12-.3-.53-1.5.12-3.13 0 0 1-.32 3.29 1.23a11.4 11.4 0 016 0C17 6.4 18 6.72 18 6.72c.65 1.63.24 2.83.12 3.13.76.84 1.21 1.91 1.21 3.22 0 4.61-2.81 5.62-5.48 5.92.42.36.79 1.08.79 2.18v3.24c0 .32.22.7.82.58A12 12 0 0012 0z"/>
+                        </svg>
+                    </span>
+                    <span class="contact-label">GitHub:</span>
+                    <span class="contact-value"><a href="https://github.com/Dineshkumarsenthil" target="_blank">github.com/Dineshkumarsenthil</a></span>
+                </li>
+            </ul>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 My Docker Website</p>
+    </footer>
+</body>
+</html>

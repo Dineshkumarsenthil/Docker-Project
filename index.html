@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Neon Docker Website</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(120deg, #0f2027 0%, #2c5364 100%);
+      min-height: 100vh;
+      color: #fff;
+      box-shadow: inset 0 0 100px #00f2fe44;
+    }
+    header {
+      background: linear-gradient(90deg, #00f2fe 0%, #4facfe 100%);
+      color: #fff;
+      padding: 32px 0 18px 0;
+      box-shadow: 0 2px 24px #00f2fe44;
+      text-align: center;
+      border-radius: 0 0 22px 22px;
+      text-shadow: 0 0 8px #00f2fe, 0 0 20px #4facfe;
+    }
+    header h1 {
+      font-size: 2.7rem;
+      font-weight: 700;
+      margin: 0;
+      display: inline-block;
+      vertical-align: middle;
+      letter-spacing: 2px;
+      text-shadow: 0 0 14px #00f2fe, 0 0 28px #4facfe;
+    }
+    header .icon {
+      font-size: 2.5rem;
+      vertical-align: middle;
+      margin-right: 12px;
+      text-shadow: 0 0 10px #00f2fe;
+    }
+    nav {
+      margin-top: 14px;
+    }
+    nav a {
+      color: #fff;
+      font-weight: 700;
+      text-decoration: none;
+      margin: 0 18px;
+      font-size: 1.2rem;
+      text-shadow: 0 0 6px #00f2fe;
+      transition: text-shadow 0.2s, color 0.2s;
+    }
+    nav a:hover {
+      text-shadow: 0 0 16px #fff, 0 0 24px #00f2fe;
+      color: #00f2fe;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 70vh;
+    }
+    .card {
+      background: rgba(27, 30, 38, 0.93);
+      padding: 38px 34px;
+      border-radius: 22px;
+      box-shadow: 0 8px 36px #00f2fe44, 0 0 0 4px #00f2fe88;
+      max-width: 480px;
+      margin-top: 52px;
+      text-align: center;
+      animation: fadeIn 1.2s;
+      color: #fff;
+      border: 2px solid #00f2fe;
+      text-shadow: 0 0 12px #00f2fe88;
+    }
+    .card p {
+      font-size: 1.22rem;
+      margin: 0 0 26px 0;
+      line-height: 1.7;
+      color: #b8ffff;
+      text-shadow: 0 0 8px #00f2fe44;
+    }
+    .workspace-img {
+      width: 100%;
+      max-width: 420px;
+      border-radius: 16px;
+      box-shadow: 0 4px 26px #00f2fe55, 0 0 0 2px #00f2fe88;
+      margin-bottom: 24px;
+      margin-top: 6px;
+      object-fit: cover;
+      border: 2px solid #00f2fe;
+    }
+    .btn {
+      background: linear-gradient(90deg, #00f2fe 0%, #4facfe 100%);
+      color: #fff;
+      border: none;
+      padding: 14px 36px;
+      border-radius: 10px;
+      font-size: 1.18rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 0 20px #00f2fe, 0 4px 16px #4facfe99;
+      margin-top: 8px;
+      transition: background 0.3s, transform 0.2s, box-shadow 0.2s;
+      text-shadow: 0 0 10px #fff, 0 0 20px #00f2fe;
+      outline: none;
+    }
+    .btn:hover {
+      background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
+      transform: translateY(-4px) scale(1.07);
+      box-shadow: 0 0 40px #00f2fe, 0 8px 32px #4facfe;
+    }
+    /* Neon Modal Styles */
+    #myModal {
+      display: none;
+      position: fixed;
+      top:0; left:0;
+      width:100vw; height:100vh;
+      background: rgba(0,0,0,0.6);
+      z-index:1000;
+      justify-content: center;
+      align-items: center;
+    }
+    #myModal.active {
+      display: flex;
+    }
+    #modalContent {
+      background: #23243b;
+      color: #fff;
+      padding: 40px 32px;
+      border-radius: 16px;
+      text-align: center;
+      box-shadow: 0 0 44px #00f2fe, 0 0 0 4px #4facfe;
+      min-width: 330px;
+      max-width: 96vw;
+      position: relative;
+      border: 2px solid #00f2fe;
+      text-shadow: 0 0 12px #00f2fe88;
+    }
+    #closeBtn {
+      margin-top: 26px;
+      padding: 10px 26px;
+      background: linear-gradient(90deg, #00f2fe 0%, #4facfe 100%);
+      border: none;
+      border-radius: 7px;
+      color: #fff;
+      font-size: 1.08rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 0 18px #00f2fe, 0 2px 8px #4facfe99;
+      text-shadow: 0 0 8px #fff, 0 0 14px #00f2fe;
+      outline: none;
+      transition: background 0.2s, box-shadow 0.2s;
+    }
+    #closeBtn:hover {
+      background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
+      box-shadow: 0 0 34px #00f2fe, 0 8px 32px #4facfe;
+    }
+    footer {
+      background: #181818;
+      color: #fff;
+      text-align: center;
+      padding: 20px 0;
+      position: fixed;
+      width: 100%;
+      bottom: 0;
+      font-size: 1.07rem;
+      letter-spacing: 1px;
+      border-top: 2px solid #00f2fe;
+      box-shadow: 0 0 8px #00f2fe44;
+      text-shadow: 0 0 8px #00f2fe44;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(40px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    @media (max-width: 600px) {
+      .card {
+        padding: 26px 8px;
+        max-width: 97vw;
+      }
+      header h1 {
+        font-size: 1.5rem;
+      }
+      nav a {
+        font-size: 0.96rem;
+      }
+      .workspace-img {
+        max-width: 99vw;
+      }
+      #modalContent {
+        padding: 22px 6px;
+        min-width: 90vw;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <span class="icon">🌐</span>
+    <h1>Welcome to My Docker Website!</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+  <div class="container">
+    <div class="card">
+      <img 
+        src="https://kftzmgko2shxxg3i.public.blob.vercel-storage.com/5823589-2920x1640-desktop-hd-boy-programmer-wallpaper-image-7JQURWmhRHs18rXWIpNcKwJlvOcAja.jpg" 
+        alt="Boy Programmer Workspace" 
+        class="workspace-img"
+      />
+      <p>
+        Welcome to <strong>My Docker Website</strong>—a simple, modern web project designed to demonstrate the power and convenience of containerized web hosting using Docker 🐳 and Nginx 🚀.<br><br>
+        This project is ideal for developers 👨‍💻, students 🎓, or anyone interested in learning how to deploy static websites efficiently ⚡, securely 🔒, and consistently 🔄 across different platforms.
+      </p>
+      <button class="btn" onclick="showModalAndConfetti()">Click Me!</button>
+    </div>
+  </div>
+  <!-- Neon Modal Structure -->
+  <div id="myModal">
+    <div id="modalContent">
+      <h2 style="font-size:2.2rem;">🌟 Docker Magic!</h2>
+      <p style="font-size:1.15rem;">
+        Welcome 👋,<br>
+        You’ve unlocked neon Docker & Nginx power.<br>
+        Enjoy the glow! 🚀
+      </p>
+      <button id="closeBtn" onclick="closeModal()">Close</button>
+    </div>
+  </div>
+  <footer>
+    © 2025 My Website
+  </footer>
+  <script>
+    // Neon Modal functions
+    function showModalAndConfetti() {
+      document.getElementById('myModal').classList.add('active');
+      launchConfetti();
+    }
+    function closeModal() {
+      document.getElementById('myModal').classList.remove('active');
+    }
+    // Neon Confetti animation
+    function launchConfetti() {
+      for(let i=0; i<50; i++) {
+        let conf = document.createElement('div');
+        conf.style.position = 'fixed';
+        conf.style.left = (Math.random() * 100) + 'vw';
+        conf.style.top = '-30px';
+        conf.style.width = conf.style.height = (10 + Math.random()*10) + 'px';
+        conf.style.background = `linear-gradient(135deg, #00f2fe, #4facfe, #fff)`;
+        conf.style.borderRadius = '50%';
+        conf.style.zIndex = 2000;
+        conf.style.opacity = 0.9;
+        conf.style.pointerEvents = 'none';
+        conf.style.boxShadow = '0 0 24px #00f2fe99, 0 0 12px #fff';
+        conf.style.transition = 'top 1.8s cubic-bezier(.5,1.2,0,1), opacity 1.8s';
+        document.body.appendChild(conf);
+        setTimeout(() => {
+          conf.style.top = (55 + Math.random()*35) + 'vh';
+          conf.style.opacity = 0;
+        }, 10);
+        setTimeout(() => conf.remove(), 1850);
+      }
+    }
+  </script>
+</body>
+</html>

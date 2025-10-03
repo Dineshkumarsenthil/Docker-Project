@@ -1,0 +1,233 @@
+/* Reset */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+    color: #222;
+    background: #161d27;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* Animated Cloud Background */
+.cloud-bg {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background: url("https://www.transparenttextures.com/patterns/clouds.png") repeat center center;
+    opacity: 0.13;
+    animation: cloudsMove 30s linear infinite;
+}
+@keyframes cloudsMove {
+    0% { background-position: 0 0; }
+    100% { background-position: 1000px 100px; }
+}
+
+/* Frosted Glass Card */
+.glass {
+    background: rgba(255,255,255,0.85);
+    box-shadow: 0 8px 32px rgba(23,83,192,0.14);
+    border-radius: 26px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.18);
+}
+
+/* Header & Nav */
+header {
+    background: linear-gradient(90deg, #007bff 70%, #0056b3 100%);
+    color: #fff;
+    text-align: center;
+    padding: 36px 0 12px 0;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+}
+header h1 {
+    font-size: 2.4rem;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+nav {
+    margin-bottom: 0;
+}
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 28px;
+    font-weight: 500;
+    font-size: 1.18rem;
+    transition: color 0.2s;
+    padding-bottom: 2px;
+    border-bottom: 2px solid transparent;
+}
+nav a:hover {
+    color: #ffdd57;
+    border-bottom: 2px solid #ffdd57;
+}
+
+/* Main Content */
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 70vh;
+    padding: 60px 10px 60px 10px;
+}
+
+/* About Card Layout */
+.about-card {
+    display: flex;
+    flex-direction: row;
+    gap: 0;
+    max-width: 900px;
+    margin: 38px auto 0 auto;
+    padding: 48px 44px;
+    align-items: flex-start;
+    text-align: left;
+    background: rgba(255,255,255,0.92);
+    border-radius: 26px;
+    box-shadow: 0 8px 32px rgba(23,83,192,0.13);
+    position: relative;
+}
+
+.about-left, .about-right {
+    flex: 1;
+    min-width: 0;
+}
+
+.about-left {
+    border-right: 2px solid #eef2f6;
+    padding-right: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.about-left h2 {
+    margin-top: 0;
+    font-size: 2.2rem;
+    color: #007bff;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 18px;
+}
+.about-left h2 span {
+    color: #007bff;
+}
+
+.about-left .brand {
+    color: #007bff;
+    font-weight: 600;
+    font-size: 1.1em;
+}
+
+.about-left p {
+    font-size: 1.18rem;
+    margin-bottom: 0;
+    line-height: 1.7;
+}
+
+.emoji {
+    font-size: 1.25em;
+    vertical-align: middle;
+}
+
+/* Right Section Styling */
+.about-right {
+    padding-left: 40px;
+}
+
+.about-right h3 {
+    margin-top: 0;
+    font-size: 1.26rem;
+    color: #ffa502;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 14px;
+    letter-spacing: 0.5px;
+}
+
+.about-right ul {
+    margin: 0 0 22px 0;
+    padding-left: 0;
+    list-style: none;
+}
+
+.about-right li {
+    margin-bottom: 11px;
+    font-size: 1.08rem;
+    text-align: left;
+    line-height: 1.6;
+}
+.about-right strong {
+    color: #007bff;
+    font-weight: 700;
+    margin-right: 4px;
+}
+
+.about-right .thanks {
+    margin-top: 24px;
+    font-size: 1.13rem;
+    color: #007bff;
+    font-weight: 600;
+}
+
+.about-right a {
+    color: #007bff;
+    text-decoration: underline;
+    word-break: break-all;
+}
+.about-right a:hover {
+    color: #ffa502;
+    text-decoration: underline;
+}
+
+/* Footer */
+footer {
+    background: #222;
+    color: #fff;
+    text-align: center;
+    padding: 17px 0;
+    font-size: 1.02rem;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    border-radius: 0 0 20px 20px;
+    box-shadow: 0 -2px 8px rgba(23,83,192,0.10);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .about-card {
+        flex-direction: column;
+        max-width: 98vw;
+        padding: 22px 10px;
+        gap: 0;
+    }
+    .about-left {
+        border-right: none;
+        padding-right: 0;
+        border-bottom: 2px solid #eef2f6;
+        padding-bottom: 18px;
+    }
+    .about-right {
+        padding-left: 0;
+        padding-top: 18px;
+    }
+    header h1 {
+        font-size: 1.7rem;
+    }
+}
+
+@media (max-width: 600px) {
+    main { padding: 18px 3px 80px 3px; }
+    .about-card { padding: 10px 2px; }
+    footer { font-size: 0.9rem; padding: 12px 0; }
+    nav a { margin: 0 8px; font-size: 1rem; }
+}
+
